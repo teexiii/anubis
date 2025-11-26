@@ -9,7 +9,7 @@ COPY . .
 # Build code Go thành file chạy
 # (Cần đảm bảo file html đã được embed hoặc copy theo)
 RUN go mod download
-RUN go build -o anubis_binary .
+RUN CGO_ENABLED=0 GOOS=linux go build -o anubis_binary ./cmd/anubis
 
 # Giai đoạn 2: Tạo ảnh Docker nhẹ để chạy
 FROM alpine:latest
