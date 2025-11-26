@@ -63,27 +63,6 @@ templ base(title string, body templ.Component, impressum *config.Impressum, chal
 			@templ.JSONScript("anubis_public_url", anubis.PublicUrl)
 		</head>
 		<body id="top">
-			<main>
-				<h1 id="title" class="centered-div">{ title }</h1>
-				@body
-				<footer>
-					<div class="centered-div">
-						<p>
-							{ localizer.T("protected_by") } <a href="https://github.com/TecharoHQ/anubis">Anubis</a> { localizer.T("protected_from") } <a
-	href="https://techaro.lol"
->Techaro</a>. { localizer.T("made_with") }.
-						</p>
-						<p>{ localizer.T("mascot_design") } <a href="https://bsky.app/profile/celphase.bsky.social">{ localizer.T("celphase") }</a>.</p>
-						if impressum != nil {
-							<p>
-								@templ.Raw(impressum.Footer)
-								-- <a href={ templ.SafeURL(fmt.Sprintf("%simprint", anubis.APIPrefix)) }>Imprint</a>
-							</p>
-						}
-						<p>{ localizer.T("version_info") } <code>{ anubis.Version }</code>.</p>
-					</div>
-				</footer>
-			</main>
 		</body>
 	</html>
 }
