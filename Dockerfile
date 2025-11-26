@@ -12,10 +12,13 @@ COPY . .
 # Cài đặt dependencies và build assets
 RUN npm ci
 RUN go mod download
+
+# Add node_modules/.bin to PATH for esbuild and other tools
+ENV PATH="/app/node_modules/.bin:${PATH}"
+
 RUN go generate ./...
 RUN ./web/build.sh
 RUN ./xess/build.sh
-RUN ./lib/challenge/preact/build.sh
 
 # Build code Go thành file chạy
 RUN CGO_ENABLED=0 GOOS=linux go build -o anubis_binary ./cmd/anubis
