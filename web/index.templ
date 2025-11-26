@@ -62,6 +62,7 @@ templ base(title string, body templ.Component, impressum *config.Impressum, chal
 			@templ.JSONScript("anubis_public_url", anubis.PublicUrl)
 		</head>
 		<body id="top">
+			@body
 		</body>
 	</html>
 }
